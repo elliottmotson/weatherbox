@@ -25,7 +25,7 @@ def netsetup():
             while true:
                 data = conn.recv(1024)
                 validated = keyvalidate(data.decode())
-                    if validated = true
+                if validated = true
                     conn.send("4321")
                 else:
                 if not data:
