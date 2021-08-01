@@ -2,7 +2,10 @@
 import socket
 import os
 import fnmatch
-import python-gnupg
+
+
+validated = false
+data = ''
 
 def main():
 
@@ -21,10 +24,13 @@ def netsetup():
             print("Request from ", addr)
             while true:
                 data = conn.recv(1024)
+                validated = keyvalidate(data.decode())
+                    if validated = true
+                    conn.send("4321")
+                else:
                 if not data:
+                    print("Net setup failed to receive incoming data")
                     break
-
-
 
 
 def clientkey():
@@ -34,12 +40,12 @@ def clientkey():
     license = open("./license.txt","w")
     license.write(licensekey)
 
-def keyvalidate():
+def keyvalidate(data):
 
-    netsetup()
-    socket.send(licensekey.encode())
-    serverreply = socket.recv(1024)
-
+    if data = '1234'
+        return true
+    else
+        return false
 
 
 if __name__ == '__main__':

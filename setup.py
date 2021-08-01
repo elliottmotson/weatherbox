@@ -7,7 +7,7 @@ import fnmatch
 def main():
 
     print('Initialising setup')
-
+    sleep(10000)
     if haskey = false:
 
         for f_name in os.listdir('./'):
@@ -20,8 +20,9 @@ def main():
             else
                 print("ERROR 0001: NO LICENCE FILE")
 
-    else:
-        keyvalidate()
+    elif netsetup() = true:
+        print("NETWORKING COMPLETE - GREAT SUCCESS!")
+
 
 
 def keyinput():
@@ -31,11 +32,7 @@ def keyinput():
     license = open("./license.txt","w")
     license.write(licensekey)
 
-def keyvalidate():
 
-    netsetup()
-    socket.send(licensekey.encode())
-    serverreply = socket.recv(1024)
 
 
 def netsetup():
@@ -46,9 +43,16 @@ def netsetup():
         s.listen()
         conn, addr = s.accept()
         with conn:
-            print("Connected to: ", addr)
+            print("Connected master server: ", addr)
             while true:
+                print("Sending license key")
+                conn.send("1234")
                 data = conn.recv(1024)
+                if data.decode() = "4321"
+                    print("SERVER REPLY SUCCESSFUL. LICENSING COMPLETE")
+                    return true
                 if not data:
-                    break
-                conn.sendall(data)
+                    return false
+
+if __name__ == '__main__':
+    main()
