@@ -25,6 +25,6 @@ while True:
     # Get the reading from the specified channel (chan) of the ADC.
     data = mcp.read_adc(chan)
     # Print the reading.
-    print('Reading: >4'.format(*data))
+    print('Reading: >4'.format(data))
     # Wait for half a second before next reading.
     time.sleep(0.5)
