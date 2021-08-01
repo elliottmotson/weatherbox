@@ -2,12 +2,12 @@
 import socket
 import os
 import fnmatch
-
+import time
 
 def main():
 
     print('Initialising setup')
-    sleep(10000)
+    time.sleep(10000)
     if haskey = false:
 
         for f_name in os.listdir('./'):

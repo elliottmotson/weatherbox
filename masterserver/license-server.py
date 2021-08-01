@@ -2,7 +2,7 @@
 import socket
 import os
 import fnmatch
-
+import time
 
 validated = false
 data = ''
@@ -12,7 +12,7 @@ def main():
     print('Initialising setup')
     netsetup()
     clientkey()
-
+    time.sleep(10000)
 def netsetup():
     HOST = '127.0.0.1'  # Standard loopback interface address (localhost)
     PORT = 64206        # Port to listen on (non-privileged ports are > 1023)
