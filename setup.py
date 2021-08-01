@@ -47,7 +47,7 @@ def netsetup():
         conn, addr = s.accept()
         with conn:
             print("Connected to: ", addr)
-            while True:
+            while true:
                 data = conn.recv(1024)
                 if not data:
                     break
