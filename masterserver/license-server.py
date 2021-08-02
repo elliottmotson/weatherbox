@@ -15,19 +15,19 @@ def main():
 
 def launchremote():
 
+    key = 'LICENSEKEY'
     HOST = socket.gethostname()
     PORT = 4206
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind((HOST, PORT))
     s.listen(5)
     print("LISTENING ON: ", PORT)
-
     while True:
         clientsocket, address = s.accept()
         print("CONNECTION TO POSSIBLE CLIENT ESTABLISHED")
         print("Verifying...")
-        clientsocket.send(bytes("4321", "utf-8"))
-        print("Sent activation reply to client ", address, ": 4321")
+        clientsocket.send(bytes(key, "utf-8"))
+        print("Sent activation reply to client", address, ": ", key)
 
 
 def clientkey():
