@@ -1,1 +1,3 @@
 sudo pip install adafruit-circuitpython-mcp3008
+sudo pip install python-gnupg fs
+sudo pip install fs

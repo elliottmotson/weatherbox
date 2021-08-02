@@ -1,12 +1,19 @@
+<<<<<<< Updated upstream
 #!/usr/bin/env python3
 import socket
 import os
 import fnmatch
 import time
+=======
+import os
+import fnmatch
+
+>>>>>>> Stashed changes
 
 def main():
 
     print('Initialising setup')
+<<<<<<< Updated upstream
     time.sleep(10000)
     if haskey = false:
 
@@ -24,6 +31,17 @@ def main():
         print("NETWORKING COMPLETE - GREAT SUCCESS!")
 
 
+=======
+
+    for f_name in os.listdir('./'):
+        if f_name.endswith('license.txt'):
+            print("Settings file exists.")
+            license = open("./license.txt" , "a")
+            licensekey = license.read()
+            print("LICENSE KEY - " + license)
+        else
+            print("ERROR 0001: NO SETTINGS FILE")
+>>>>>>> Stashed changes
 
 def keyinput():
 
@@ -31,6 +49,7 @@ def keyinput():
     licensekey = input()
     license = open("./license.txt","w")
     license.write(licensekey)
+<<<<<<< Updated upstream
 
 
 
@@ -53,3 +72,5 @@ def netsetup():
                     return true
                 if not data:
                     return false
+=======
+>>>>>>> Stashed changes
