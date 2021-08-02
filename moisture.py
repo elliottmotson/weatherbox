@@ -1,14 +1,10 @@
-<<<<<<< Updated upstream
-=======
-# Programme for reading and interpreting data from the
-# HW-390 Capacitive Moisture Sensor v2.0.
-
+import Adafruit_MCP3008
+import Adafruit_GPIO.SPI as SPI
 import time
 
+# Programme for reading and interpreting data from the
+# HW-390 Capacitive Moisture Sensor v2.0.
 # Import SPI library (for hardware SPI) and MCP3008 library.
-import Adafruit_GPIO.SPI as SPI
-import Adafruit_MCP3008
-
 # Software SPI configueration:
 CLK = 18
 MISO = 23
@@ -30,4 +26,3 @@ while True:
     print('Reading: >4'.format(data))
     # Wait for half a second before next reading.
     time.sleep(0.5)
->>>>>>> Stashed changes

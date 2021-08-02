@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 import socket
-import os
-import fnmatch
 import time
 
 validated = False
