@@ -3,26 +3,16 @@ import socket
 import os
 import fnmatch
 import time
+import sys
 
 def main():
 
-    print('Initialising setup')
+    print('Initialising box setup')
+
+
+    netsetup()
+    print("NETWORKING COMPLETE - GREAT SUCCESS!")
     time.sleep(10000)
-    if haskey = false:
-
-        for f_name in os.listdir('./'):
-            if f_name.endswith('license.txt'):
-                print("Licence file exists.")
-                license = open("./license.txt" , "a")
-                licensekey = license.read()
-                print("LICENSE KEY - " + license)
-                haskey = true
-            else
-                print("ERROR 0001: NO LICENCE FILE")
-
-    elif netsetup() = true:
-        print("NETWORKING COMPLETE - GREAT SUCCESS!")
-
 
 
 def keyinput():
@@ -32,9 +22,18 @@ def keyinput():
     license = open("./license.txt","w")
     license.write(licensekey)
 
+def connectremote():
+
+    HOST = socket.gethostname()
+    PORT = 4206
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect((HOST, PORT))
+    incoming = s.recv(1024)
+    print("Connected master server: ", HOST)
+    print("MESSAGE FROM LICENSING SERVER: " + incoming.decode("utf-8"))
 
 
-
+<<<<<<< Updated upstream
 def netsetup():
     HOST = '127.0.0.1'  # Standard loopback interface address (localhost)
     PORT = 64206        # Port to listen on (non-privileged ports are > 1023)
@@ -54,5 +53,7 @@ def netsetup():
                 if not data:
                     return false
 
+=======
+>>>>>>> Stashed changes
 if __name__ == '__main__':
     main()
