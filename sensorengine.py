@@ -27,7 +27,7 @@ def setup():
 
 def main():
     while identifysensor(sensorlisten()) is False:
-        print("Retrying connection with box in 1 second...")
+        print("Looking for sensor")
         time.sleep(1)
     input()
 
@@ -51,20 +51,13 @@ def sensorlisten():
     except ConnectionRefusedError:
         print("ERROR: ConnectionRefusedError")
         print(
-            "Client port may be busy or master server unreachable Are two instances running?")
+            "Client port may be busy or server unreachable Are two instances running?")
         return False
 
 
 def identifysensor(sensorname):
-    if sensorname == "HW-390":
-        sensor = {
-          "ID": "1",
-          "name": "HW-390",
-          "type": "moisture",
-        }
-        return True
-    else:
-        return False
+    print(sensorname)
+    return True
 
 
 if __name__ == '__main__':
