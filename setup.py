@@ -29,7 +29,7 @@ def main():
 
 
 def sensorboot():
-    os.system('python3 sensorengine.py')
+    os.system('python3 C:/weatherbox/sensorengine.py')
     print("Sensor Engine Started")
 
 
@@ -49,16 +49,16 @@ def masterconnect():
             s.connect((HOST, PORT))
             print("Contacting master server")
             while activated is False:
-                print("Socket running")
                 incoming = s.recv(1024)
                 incoming = incoming.decode("utf-8")
-                print("Message received" + incoming)
+                print("Master Server reply: " + incoming)
                 validatekey(incoming)
                 if incoming == "LICENSEKEY":
                     print("ACTIVATION KEY: " + incoming)
                     return True
                 else:
                     print("CONNECTION ERROR")
+                    main()
                     break
         except ConnectionRefusedError:
             print("ERROR: ConnectionRefusedError")
