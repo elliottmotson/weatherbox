@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
-print("Sensor Engine Started")
-print("SENSOR INIT...")
-input()
+
+
+def main():
+    print("Sensor Engine Started")
+    print("SENSOR INIT...")
+    input()
+
+if __name__ == '__main__':
+    main()
