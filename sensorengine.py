@@ -1,35 +1,20 @@
 #!/usr/bin/env python3
 import socket
-import json
-import time
-
-sensor = {
-  "ID": "",
-  "name": "",
-  "type": "",
-}
-
-connected = False
-
-
-def setup():
-    print("Sensor Engine Started")
-    print("SENSOR INIT...")
-    print("MENU SETTINGS")
-    print("[1] Activate Sensor Listening")
-    userinput = input()
-    if userinput == 1:
-        sensorlisten()
-    else:
-        print("Invalid input, restarting...")
-        main()
+import threading
 
 
 def main():
-    while identifysensor(sensorlisten()) is False:
-        print("Looking for sensor")
-        time.sleep(1)
+    init()
+    #listenthread = threading.Thread(target=sensorlisten)
+    #listenthread.start()
+    data = sensorlisten()
+    print(data)
     input()
+
+
+def init():
+    print("Initialising")
+    settings = readsettings()
 
 
 def readsettings():
@@ -37,27 +22,23 @@ def readsettings():
 
 
 def sensorlisten():
-    try:
-        HOST = socket.gethostname()
-        PORT = 420
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.connect((HOST, PORT))
-        print("Contacting sensor")
-        while True:
-            incoming = s.recv(1024)
-            incoming = incoming.decode("utf-8")
-            print("SENSOR CONNECTED SUCCESFULLY: " + incoming)
-            return incoming
-    except ConnectionRefusedError:
-        print("ERROR: ConnectionRefusedError")
-        print(
-            "Client port may be busy or server unreachable Are two instances running?")
+    listen = True
+    HOST = "localhost"
+    PORT = 6420
+    print(HOST)
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect((HOST, PORT))
+    print("Contacting sensor")
+    while listen is True:
+        incoming = s.recv(1024)
+        print("SENSOR CONNECTED: " + incoming.decode("utf-8"))
+        data = incoming.decode("utf-8")
+        if data is not None:
+            return data
+        else:
+            continue
+    else:
         return False
-
-
-def identifysensor(sensorname):
-    print(sensorname)
-    return True
 
 
 if __name__ == '__main__':

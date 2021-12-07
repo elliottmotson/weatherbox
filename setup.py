@@ -13,8 +13,8 @@ def main():
         print("NETWORKING COMPLETE - GREAT SUCCESS!")
     else:
         print("Unable to contact master server. Activate offline?")
-        print("1. Yes")
-        print("2. No")
+        print("[1] Yes")
+        print("[2] No")
         txtinput = input()
         if txtinput == "1":
             print('Please enter license key filename in current directory xxxxxxx.wb')
